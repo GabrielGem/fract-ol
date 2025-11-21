@@ -1,0 +1,48 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/11/19 17:07:05 by gabrgarc          #+#    #+#              #
+#    Updated: 2025/11/21 11:05:52 by gabrgarc         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = fractol
+FLAGS = -Wall -Wextra -Werror -Ilibft/includes -Iminilibx-linux
+COMPILER = cc
+
+SRCS = \
+	main.c
+
+LIBFT_DIR = libft/
+LIBFT = $(LIBFT_DIR)libft.a
+
+MLX_DIR     = minilibx-linux/
+MLX_LIB     = $(MLX_DIR)/libmlx_Linux.a
+MLX_FLAGS   = -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
+
+all: $(MLX_LIB) $(NAME)
+
+$(NAME): $(SRCS) $(LIBFT) $(MINILIB_DIR)
+	$(CC) $(FLAGS) $(SRCS) $(MLX_FLAGS) -o $(NAME)
+
+$(MLX_LIB):
+	$(MAKE) -sC $(MLX_DIR)
+
+$(LIBFT):
+	$(MAKE) -sC $(LIBFT_DIR)
+
+clean:
+	$(MAKE) -sC $(LIBFT_DIR) clean
+	$(MAKE) -sC $(MLX_DIR) clean
+
+fclean: clean
+	rm -rf $(NAME)
+	$(MAKE) -sC $(LIBFT_DIR) fclean
+
+re: fclean all
+
+.PHONY: all clean fclean re
