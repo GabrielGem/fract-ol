@@ -6,12 +6,12 @@
 #    By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 17:07:05 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/21 11:05:52 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/25 19:26:21 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
-FLAGS = -Wall -Wextra -Werror -Ilibft/includes -Iminilibx-linux
+FLAGS = -Wall -Wextra -Werror -Ilibft -Iminilibx-linux
 COMPILER = cc
 
 SRCS = \
@@ -21,16 +21,16 @@ LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
 MLX_DIR     = minilibx-linux/
-MLX_LIB     = $(MLX_DIR)/libmlx_Linux.a
+MLX_LIB     = $(MLX_DIR)libmlx_Linux.a
 MLX_FLAGS   = -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
 
 all: $(MLX_LIB) $(NAME)
 
-$(NAME): $(SRCS) $(LIBFT) $(MINILIB_DIR)
-	$(CC) $(FLAGS) $(SRCS) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(SRCS) $(LIBFT) $(MLX_LIB)
+	$(CC) $(FLAGS) $(SRCS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 $(MLX_LIB):
-	$(MAKE) -sC $(MLX_DIR)
+	$(MAKE) -C $(MLX_DIR) all
 
 $(LIBFT):
 	$(MAKE) -sC $(LIBFT_DIR)
