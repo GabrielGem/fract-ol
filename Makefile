@@ -6,7 +6,7 @@
 #    By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 17:07:05 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/25 19:26:21 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/26 19:45:54 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ FLAGS = -Wall -Wextra -Werror -Ilibft -Iminilibx-linux
 COMPILER = cc
 
 SRCS = \
-	main.c
+	main.c \
+	event_manager.c
 
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
