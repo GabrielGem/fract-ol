@@ -6,12 +6,12 @@
 #    By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 17:07:05 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/26 19:45:54 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/28 13:29:31 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
-FLAGS = -Wall -Wextra -Werror -Ilibft -Iminilibx-linux
+FLAGS = -Wall -Wextra -Werror -O3 -Ilibft/includes -Iminilibx-linux
 COMPILER = cc
 
 SRCS = \
