@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:15:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/27 11:06:10 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:08:33 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,10 @@
 # include <sys/time.h>
 # include "libft.h"
 
-# define ITERATIONS 500
+# define ITERATIONS 250
 # define BLACK	0x000000
 # define WHITE	0xFFFFFF
 # define LAVA	0xFF3300
-
-typedef struct s_data
-{
-	void	*layer;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_data;
 
 typedef struct s_complex
 {
@@ -57,15 +48,25 @@ typedef struct s_range
 	t_complex	max;
 }	t_range;
 
+typedef struct s_data
+{
+	void	*layer;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_data;
+
 typedef struct s_fractol
 {
-	void		*mlx;
-	void		*mlx_win;
-	char		*name_win;
+	void		*connection;
+	void		*win;
+	char		*name;
 	t_data		img;
 	t_range		range;
 	t_complex	coordinates;
 	t_axes		axis;
+	t_complex	k;
 	double		zoom;
 }	t_fractol;
 
@@ -76,6 +77,7 @@ enum e_sizes
 };
 
 // fractol
+void	mlx_connection(t_fractol *mlx);
 void	fractol_init(t_fractol *fractol);
 void	fractol_render(t_fractol *fractol);
 int		handle_pixel(int x, int y, t_fractol *fractol);
