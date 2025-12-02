@@ -6,7 +6,7 @@
 #    By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 17:07:05 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/28 13:29:31 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/12/01 17:29:48 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ COMPILER = cc
 
 SRCS = \
 	main.c \
-	event_manager.c
+	event_manager.c \
+	input_validation.c \
+	rendering.c \
+	error_handling.c
 
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
