@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:24:13 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/02 09:40:55 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/02 10:09:18 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	error_manager(int errnum)
 
 	error_str = strerror(errnum);
 	perror(error_str);
-	printf("./fractol mandelbrot\n./fractol julia <real> <imaginary>\n");
-	printf("./fractol julia 0.285 0.01\n");
-	printf("./fractol julia -0.70176 -0.3842\n");
+	ft_printf("./fractol mandelbrot\n./fractol julia <real> <imaginary>\n");
+	ft_printf("./fractol julia 0.285 0.01\n");
+	ft_printf("./fractol julia -0.8 0.156\n");
 	exit (0);
 }
