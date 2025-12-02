@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:15:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/29 18:08:33 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/01 14:15:47 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,20 @@ enum e_sizes
 	HEIGHT = 500
 };
 
+enum e_errnum
+{
+	EINVAL = 22,
+};
+
 // fractol
-void	mlx_connection(t_fractol *mlx);
-void	fractol_init(t_fractol *fractol);
 void	fractol_render(t_fractol *fractol);
-int		handle_pixel(int x, int y, t_fractol *fractol);
 
 // event handling
 void	event_manager(t_fractol *fractol);
-int		key_map(int keysym, t_fractol *param);
-int		mouse_scroll(int button, int x, int y, t_fractol *fractol);
 
-// quit the program in a clean way
-int		close_program(t_fractol *fractol);
+// error handling
+void	clear_error(void *ptr, int errnum);
+void	error_manager(int errnum);
+void	validations(char **args, t_fractol *fractol);
 
 #endif
