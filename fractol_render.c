@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   fractol_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:17:06 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/01 14:17:22 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/07 18:14:23 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	fractol_render(t_fractol *info)
 	int	out;
 
 	pixel_ptr = (int *)info->img.addr;
-	info->coordinates.r = (info->range.max.r - (info->range.min.r)) / WIDTH;
-	info->coordinates.i = (info->range.min.i - info->range.max.i) / HEIGHT;
+	info->coordinates.r = (info->range.max.r - (info->range.min.r)) / width;
+	info->coordinates.i = (info->range.min.i - info->range.max.i) / height;
 	y = 0;
-	while (y < HEIGHT)
+	while (y < height)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < width)
 		{
 			out = handle_pixel(x, y, info);
-			if (out == ITERATIONS)
+			if (out == iterations)
 				*pixel_ptr = BLACK;
 			else
 				*pixel_ptr = (out * 2) << 16 | (out * 4) << 8 | (out * 8);
@@ -55,13 +55,13 @@ static int	handle_pixel(int x, int y, t_fractol *fractol)
 	pixel.i = fractol->range.max.i + (y * fractol->coordinates.i);
 	z = (t_complex){0.0, 0.0};
 	c = pixel;
-	if (fractol->name[0] == 'j')
+	if (fractol->name[0] == 'J')
 	{
 		z = pixel;
 		c = fractol->k;
 	}
 	i = -1;
-	while (++i < ITERATIONS)
+	while (++i < iterations)
 	{
 		if ((z.r * z.r) + (z.i * z.i) > 4.0)
 			return (i);
@@ -69,5 +69,5 @@ static int	handle_pixel(int x, int y, t_fractol *fractol)
 		z.i = (2 * z.r * z.i) + c.i;
 		z.r = temp_real;
 	}
-	return (ITERATIONS);
+	return (iterations);
 }
