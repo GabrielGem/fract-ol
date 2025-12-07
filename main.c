@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 17:41:38 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/01 17:44:53 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/07 18:15:15 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ int	main(int argc, char **argv)
 	t_fractol	fractol;
 
 	if (argc < 2)
-		error_manager(EINVAL);
+		error_manager(EINVNU);
 	fractol.name = NULL;
-	if (!ft_strncmp(argv[1], "mandelbrot", 11) && argc == 2)
-		fractol.name = "mandelbrot";
-	if (!ft_strncmp(argv[1], "julia", 6) && argc == 4)
+	if (!ft_strncmp(argv[1], "Mandelbrot", 11) && argc == 2)
+		fractol.name = "Mandelbrot";
+	if (!ft_strncmp(argv[1], "Julia", 6) && argc == 4)
 	{
-		fractol.name = "julia";
-		validations(&argv[2], &fractol);
+		fractol.name = "Julia";
+		input_validations(&argv[2], &fractol);
 	}
 	if (fractol.name == NULL)
-		error_manager(EINVAL);
+		error_manager(EINVNA);
 	mlx_connection(&fractol);
 	fractol_init(&fractol);
 	fractol_render(&fractol);
@@ -41,8 +41,14 @@ int	main(int argc, char **argv)
 static void	mlx_connection(t_fractol *mlx)
 {
 	mlx->connection = mlx_init();
-	mlx->win = mlx_new_window(mlx->connection, WIDTH, HEIGHT, mlx->name);
-	mlx->img.layer = mlx_new_image(mlx->connection, WIDTH, HEIGHT);
+	if (!mlx->connection)
+		mlx_error(mlx, "Connection could not be established");
+	mlx->win = mlx_new_window(mlx->connection, width, height, mlx->name);
+	if (!mlx->win)
+		mlx_error(mlx, "it was not possible to create a window");
+	mlx->img.layer = mlx_new_image(mlx->connection, width, height);
+	if (!mlx->img.layer)
+		mlx_error(mlx, "It was not possible to create an image layer");
 	mlx->img.addr = mlx_get_data_addr(mlx->img.layer, &mlx->img.bpp,
 			&mlx->img.line_len, &mlx->img.endian);
 	event_manager(mlx);
