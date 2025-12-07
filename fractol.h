@@ -6,29 +6,23 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:15:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/01 14:15:47 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/07 18:13:03 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <fcntl.h>
-# include <unistd.h>
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
-# include <math.h>
 # include "minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <sys/time.h>
 # include "libft.h"
+# include "ft_printf.h"
 
-# define ITERATIONS 250
 # define BLACK	0x000000
-# define WHITE	0xFFFFFF
-# define LAVA	0xFF3300
 
 typedef struct s_complex
 {
@@ -72,13 +66,16 @@ typedef struct s_fractol
 
 enum e_sizes
 {
-	WIDTH = 500,
-	HEIGHT = 500
+	iterations = 250,
+	width = 500,
+	height = 500,
 };
 
 enum e_errnum
 {
 	EINVAL = 22,
+	EINVNU = 0,
+	EINVNA = 1,
 };
 
 // fractol
@@ -89,7 +86,8 @@ void	event_manager(t_fractol *fractol);
 
 // error handling
 void	clear_error(void *ptr, int errnum);
+void	mlx_error(t_fractol *mlx, char *s);
 void	error_manager(int errnum);
-void	validations(char **args, t_fractol *fractol);
+void	input_validations(char **args, t_fractol *fractol);
 
 #endif
