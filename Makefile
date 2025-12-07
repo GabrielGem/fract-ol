@@ -6,7 +6,7 @@
 #    By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 17:07:05 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/12/01 17:29:48 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/12/07 19:12:33 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,15 @@ SRCS = \
 	main.c \
 	event_manager.c \
 	input_validation.c \
-	rendering.c \
+	fractol_render.c \
 	error_handling.c
 
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
-MLX_DIR     = minilibx-linux/
-MLX_LIB     = $(MLX_DIR)libmlx_Linux.a
-MLX_FLAGS   = -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
+MLX_DIR = minilibx-linux/
+MLX_LIB = $(MLX_DIR)libmlx_Linux.a
+MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
 
 all: $(MLX_LIB) $(NAME)
 
@@ -34,10 +34,16 @@ $(NAME): $(SRCS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(FLAGS) $(SRCS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 $(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR) all
+	if [ ! -d "$(MLX_DIR)" ]; then \
+		git clone https://github.com/42Paris/minilibx-linux.git; \
+	fi
+	make -sC $(MLX_DIR) all
 
 $(LIBFT):
-	$(MAKE) -sC $(LIBFT_DIR)
+	if [ ! -d "$(LIBFT_DIR)" ]; then \
+		git clone https://github.com/GabrielGem/42_libft.git libft; \
+	fi
+	$(MAKE) -sC $(LIBFT_DIR) all
 
 clean:
 	$(MAKE) -sC $(LIBFT_DIR) clean
