@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:15:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/07 18:13:03 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:38:50 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,18 @@ typedef struct s_fractol
 	t_complex	k;
 	double		zoom;
 }	t_fractol;
+
+typedef union u_color
+{
+	unsigned int	number;
+	struct
+	{
+		unsigned char	b;
+		unsigned char	g;
+		unsigned char	r;
+		unsigned char	a;
+	}	s_channels;
+}	t_color;
 
 enum e_sizes
 {
