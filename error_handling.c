@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:24:13 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/07 17:34:51 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:21:03 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	error_manager(int errnum)
 		ft_printf("Error: Invalid numbers of arguments.\n");
 	if (errnum == EINVNA)
 		ft_printf("Error: Invalid name.\n");
-	ft_printf("./fractol mandelbrot\n./fractol julia <real> <imaginary>\n");
-	ft_printf("./fractol julia 0.285 0.01\n");
-	ft_printf("./fractol julia -0.8 0.156\n");
+	ft_printf("./fractol Mandelbrot\n./fractol Julia <real> <imaginary>\n");
+	ft_printf("./fractol Julia 0.285 0.01\n");
+	ft_printf("./fractol Julia -0.8 0.156\n");
 	exit (0);
 }
