@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 09:33:29 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/07 17:56:18 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:33:11 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ static void	valid_arguments(char *str)
 		if (ft_issignal(str[i]) && !ft_isdigit(str[i + 1]))
 			clear_error(str, EINVAL);
 		if (str[i] == '.' && ft_issignal(str[i + 1]))
-			clear_error(str, EINVAL);
-		if (ft_isdigit(str[i]) && str[i + 1] == ' ')
 			clear_error(str, EINVAL);
 		i++;
 	}
