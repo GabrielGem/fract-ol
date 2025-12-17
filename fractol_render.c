@@ -6,13 +6,14 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:17:06 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/07 18:14:23 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:47:20 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 static int	handle_pixel(int x, int y, t_fractol *fractol);
+static int	get_color_fast(int out, int max_iterations);
 
 void	fractol_render(t_fractol *info)
 {
@@ -31,10 +32,7 @@ void	fractol_render(t_fractol *info)
 		while (x < width)
 		{
 			out = handle_pixel(x, y, info);
-			if (out == iterations)
-				*pixel_ptr = BLACK;
-			else
-				*pixel_ptr = (out * 2) << 16 | (out * 4) << 8 | (out * 8);
+			*pixel_ptr = get_color_fast(out, iterations);
 			pixel_ptr++;
 			x++;
 		}
@@ -70,4 +68,17 @@ static int	handle_pixel(int x, int y, t_fractol *fractol)
 		z.r = temp_real;
 	}
 	return (iterations);
+}
+
+static int	get_color_fast(int out, int max_iterations)
+{
+	t_color	color;
+
+	if (out == max_iterations)
+		return (BLACK);
+	color.s_channels.r = (unsigned char)(out * 11);
+	color.s_channels.g = (unsigned char)(out * 13 + 50);
+	color.s_channels.b = (unsigned char)(out * 7 + 100);
+	color.s_channels.a = 0;
+	return (color.number);
 }
