@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:15:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/16 14:38:50 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/17 13:52:53 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_fractol
 	t_data		img;
 	t_range		range;
 	t_complex	coordinates;
-	t_axes		axis;
 	t_complex	k;
 	double		zoom;
 }	t_fractol;
