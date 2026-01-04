@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:17:06 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/16 14:47:20 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/12/17 14:07:17 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	handle_pixel(int x, int y, t_fractol *fractol)
 	return (iterations);
 }
 
-static int	get_color_fast(int out, int max_iterations)
+static inline int	get_color_fast(int out, int max_iterations)
 {
 	t_color	color;
 
