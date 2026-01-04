@@ -6,7 +6,7 @@
 #    By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 17:07:05 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/12/07 19:12:33 by gabrgarc         ###   ########.fr        #
+#    Updated: 2026/01/04 18:10:43 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ MLX_DIR = minilibx-linux/
 MLX_LIB = $(MLX_DIR)libmlx_Linux.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
 
-all: $(MLX_LIB) $(NAME)
+all: $(NAME)
 
 $(NAME): $(SRCS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(FLAGS) $(SRCS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
