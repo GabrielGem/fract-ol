@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 17:41:38 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/12/07 18:15:15 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2026/01/04 18:12:24 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,5 @@ static void	fractol_init(t_fractol *fractol)
 	fractol->range.min.i = -2.0;
 	fractol->range.max.r = 2.0;
 	fractol->range.max.i = 2.0;
-	fractol->axis.x = 0.0;
-	fractol->axis.y = 0.0;
 	fractol->zoom = 1.0;
 }
